@@ -12,13 +12,10 @@ export class AnalyticsService {
   ) {}
 
   getSurveyStats(surveyId: number): AnalyticsResponseDto {
-    // Pobierz wszystkie pytania i odpowiedzi
     const questions = this.questionsSvc.findBySurvey(surveyId);
     const responses = this.responsesSvc.findAll(surveyId);
 
-    // Zbuduj limity
     const questionStats: QuestionStatDto[] = questions.map(q => {
-      // zbierz wszystkie odpowiedzi dla tego pytania
       const counts: Record<string, number> = {};
       for (const r of responses) {
         const item = r.answers.find(a => a.questionId === q.id);

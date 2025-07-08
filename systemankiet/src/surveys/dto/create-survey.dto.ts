@@ -1,4 +1,3 @@
-// src/surveys/dto/create-survey.dto.ts
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateSurveyDto {
